@@ -14,6 +14,7 @@
       "after",
       { "overrides": { "?": "ignore", ":": "ignore" } }
     ],
-    "no-unused-vars": ["error", { "args": "none" }]
+    "no-unused-vars": ["error", { "args": "none" }],
+    "no-underscore-dangle": ["error", { "allow": ["_id"] }]
   }
 }

@@ -22,7 +22,10 @@ const getMaze = async (req, res, next) => {
       throw createError(400, ERROR.NO_MAZE_FOUND);
     }
 
-    res.json({ result: 'ok' });
+    const result = maze.toObject();
+    delete result._id;
+
+    res.json({ result: 'ok', maze: result });
   } catch (err) {
     next(err);
   }
