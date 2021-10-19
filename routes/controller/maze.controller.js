@@ -64,12 +64,12 @@ const postMaze = async (req, res, next) => {
       throw createError(400, ERROR.INVALID_BLOCK);
     }
 
-    await Mazes.create({
+    const created = await Mazes.create({
       algorithms,
       block,
     });
 
-    res.json({ result: 'ok' });
+    res.json({ result: 'ok', mazeId: created.id.toString() });
   } catch (err) {
     next(err);
   }

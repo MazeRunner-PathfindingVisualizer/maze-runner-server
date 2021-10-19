@@ -5,21 +5,11 @@ function checkAlgorithm(str) {
     return false;
   }
 
-  switch (str.toLowerCase()) {
-    case ALGORITHM.DFS:
-    case ALGORITHM.BFS:
-    case ALGORITHM.DIJKSTRA:
-    case ALGORITHM.A_STAR:
-    case ALGORITHM.GREEDY_BEST_FIRST_SEARCH:
-    case ALGORITHM.SWARM:
-    case ALGORITHM.BIDIRECTIONAL_SWARM:
-    case ALGORITHM.CONVERGENT_SWARM: {
-      return true;
-    }
-    default: {
-      return false;
-    }
-  }
+  const hasAlgorithm = Object.values(ALGORITHM).some(
+    (algorithm) => algorithm === str.toLowerCase(),
+  );
+
+  return hasAlgorithm;
 }
 
 function isValidAlgorithm(algorithms) {
@@ -49,21 +39,22 @@ function isValidBlock(block) {
     row.some((node) => {
       switch (node) {
         case 0:
-        case 1: {
+        case 1:
+        case 2: {
           return false;
         }
 
-        case 2: {
+        case 3: {
           startNodeCount += 1;
           return startNodeCount >= 2;
         }
 
-        case 3: {
+        case 4: {
           endNodeCount += 1;
           return endNodeCount >= 2;
         }
 
-        case 4: {
+        case 5: {
           stopoverNodeCount += 1;
           return stopoverNodeCount >= 2;
         }

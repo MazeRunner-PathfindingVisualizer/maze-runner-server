@@ -4,6 +4,7 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const createError = require('http-errors');
+const cors = require('cors');
 
 const dbLoader = require('./loader/db');
 const mazeRouter = require('./routes/maze');
@@ -11,6 +12,12 @@ const ERROR = require('./constant/error');
 
 const app = express();
 
+app.use(
+  cors({
+    origin: process.env.FRONT_URL,
+    credentials: true,
+  }),
+);
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
